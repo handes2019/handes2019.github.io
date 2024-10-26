@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>莓派学习 | 夜猫症候群的一些事一些情</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>莓派学习</h1></div><hr><div id="post-content"><p>Error 1: Partition does not have a FAT file system<br>        硬件方面使用的是树莓派4B，RAM&#x3D;4G，tf卡用的是闪迪64G。</p>
+<pre><code>系统方面使用的是Ubuntu 桌面 22.04.3 LTS（arm64）
+
+注：在第一次安装的时候一定要注意自己安装的系统是arm64的还是armhf，这在后面的wiringpi库安装会很有用。（当时因为没有注意这个问题导致在安装wiringpi上面消耗了很多时间）ubuntu下载地址：
+</code></pre>
+<p>在树莓派上安装Ubuntu | Ubuntu<br><a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/raspberry-pi">https://cn.ubuntu.com/download/raspberry-pi</a></p>
+<p>下载完成后你将会得到：这个时候我们就完成了系统的下载。接下来我们需要准备一个TF卡，使用烧录软件将系统文件烧录入tf卡中。</p>
+<p>烧录软件链接：<br>Raspberry Pi OS – Raspberry Pi<br><a target="_blank" rel="noopener" href="https://www.raspberrypi.com/software/">https://www.raspberrypi.com/software/</a></p>
+<p>问题一：第一次烧录的时候，出现了提示Partition does not have a FAT file system.</p>
+<p>问题分析：</p>
+<pre><code>这个问题产生原因是镜像文件出现问题。建议检查镜像文件是否为树莓派使用的Ubuntu镜像文件（是否下载成光盘映像文件）
+</code></pre>
+<p>错误文件长这样：</p>
+<p>解决方案：使用烧录软件中的清除SD卡，将错误系统删除，重新烧录正确的系统镜像</p>
+<p>注：这里需要注意，sd卡插入电脑后在文件管理器中是无法识别的，如果需要格式化磁盘会提示有写保护，这里不要慌，直接用烧录软件里的清楚SD卡即可。</p>
+<p>Error2：系统init<br>SSH远程登陆对于没有显示屏的小伙伴来说是非常有效远程控制树莓派的好东西。</p>
+<p>如果要实现SSH远程控制，则需要使电脑和树莓派在同一个局域网下（可以电脑开个热点啦）</p>
+<p>电脑软件需求：xshell</p>
+<p>在我做SSH远程控制之前，翻阅了很多别的大佬的文章，大径相同的解决方案就是在sd卡中加入两个文件，但是我经过好几次尝试，依旧很难将树莓派连接到我电脑的热点上，后来借用同学的显示屏才找到问题。</p>
+<p>这里插入一下一个大佬的文档，内部有xshell的教程大家可以参考一下：</p>
+<p>【树莓派】保姆级教程，如何优雅的使用ssh连接树莓派_树莓派ssh_Yuki i i i i i i i的博客-CSDN博客<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014576547/article/details/123495010">https://blog.csdn.net/u014576547/article/details/123495010</a><br>言归正传：在接入显示器后，发现系统还没完成初始化，需要等待5min左右让系统完成初始化。初始化过程中就可以完成wifi连入电脑局域网，初始化期间需要注意保持电脑网络通畅。</p>
+<p>完成系统初始化后，可以通过电脑的热点查看树莓派的地址，根据上面文档的教程完成xshell的配置。</p>
+<p>Error3：xshell报port 22错误<br>在完成找到查找到树莓派ip地址后，xshell依旧无法远程登陆树莓派，提示port 22错误。</p>
+<p>该问题应该是 新的系统没有安装ssh端or没有打开ssh导致的，我最后参考了一个大佬的文档解决该问题，参考文档如下：</p>
+<p>解决Xshell连接服务器失败：Could not connect to ‘192.168.191.128‘ (port 22): Connection failed._何极光的博客-CSDN博客<br><a target="_blank" rel="noopener" href="https://luckylifes.blog.csdn.net/article/details/107796879">https://luckylifes.blog.csdn.net/article/details/107796879</a><br>根据上面的步骤进行调试，即可完成xshell和树莓派的连接</p>
+<p>Suggest：关于获得root权限<br>因为我用的是C语言编写gpio，需要获得系统root超级权限，获得root权限方法可见以下文件：</p>
+<p>Raspberry pi 获取root权限_树莓派 提权_flyingool的博客-CSDN博客<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/linuxpassion/article/details/53972003">https://blog.csdn.net/linuxpassion/article/details/53972003</a></p>
+<p>Error4：wiringpi安装<br>如果想要使用C语言编写树莓派，需要wiringpi的库。</p>
+<p>在安装wiringpi之前，如果您是和我一样安装Ubuntu（arm64）系统的，可以参考我的操作，如果您是安装了树莓派官方系统或者32位操作系统，参考一下文档（一定要确定您装的系统64位还是32位）：</p>
+<p>树莓派4B-WiringPi库的安装和使用 (C和Python版)_树莓派4b安装wiringpi_电子芯吧客的博客-CSDN博客<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/ICXBK/article/details/108461743">https://blog.csdn.net/ICXBK/article/details/108461743</a><br>如果是arm64的系统，推荐从github安装：</p>
+<p>sudo apt-get install git &#x2F;&#x2F;安装git<br>sudo apt upset &#x2F;&#x2F;回车<br>sudo apt upgrade &#x2F;&#x2F;回车<br>sudo apt-get install build&#x2F;&#x2F;回车<br>git clone <a target="_blank" rel="noopener" href="https://github.com/WiringPi/WiringPi.git//%E5%BB%BA%E8%AE%AE%E6%B5%81%E9%87%8F%E4%B8%8B%E8%BD%BD%EF%BC%8C%E5%9B%9E%E8%BD%A6">https://github.com/WiringPi/WiringPi.git//建议流量下载，回车</a><br>cd WiringPi&#x2F;&#x2F;回车<br>.&#x2F;build&#x2F;&#x2F;安装<br>gpio -v &#x2F;&#x2F;回车<br>gpio readall &#x2F;&#x2F;回车<br>完成后界面如下：</p>
+<p>注：4B的wiringpi的版本必须要高于2.52，否则执行不了gpio readall。</p>
+<p>suggest：最后编译.c文件的时候，可以使用：</p>
+<p>gcc xxx.c -lwiringPi<br>以上是树莓派在ubuntu(arm64)系统部署，ssh，wiringpi时遇到的问题，个人解决查询的资料和个人的最终解决方案，解决方案亲测有效，最后成功成为点灯大师。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/04/15/Net/">C# null值使用ToString 报错处理 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Handes</a></h1><div id="description"><p></p></div></div><div id="aside-block"></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
