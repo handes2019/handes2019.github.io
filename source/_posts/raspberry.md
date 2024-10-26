@@ -1,10 +1,9 @@
 ---
-title: 莓派学习
+title: 树莓派学习
 date: 2024-10-26 10:50:12
 tags: raspberry
 category: raspberry
 ---
-
 Error 1: Partition does not have a FAT file system
         硬件方面使用的是树莓派4B，RAM=4G，tf卡用的是闪迪64G。
 
