@@ -5,12 +5,15 @@ tags: raspberry
 category: raspberry
 ---
 
+<meta name="referrer" content="no-referrer"/>
+
 #### 安装方法一（脚本安装）
 
 脚本安装是最推荐的方式，只需要输入下面的命令，等待自动安装好即可。
 
-| 1    | `sudo` 'curl -sSL https: "//get".docker.com \| sh' |
-| ---- | -------------------------------------------------- |
+```
+sudo curl -sSL https://get.docker.com \| sh
+```
 
 如果采用这一步安装成功，可直接跳到下文的[图形界面](https://so.csdn.net/so/search?q=%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2&spm=1001.2101.3001.7020)安装那里继续阅读。
 
@@ -33,7 +36,7 @@ ca-certificates
 software-properties-common
 ```
 
-{% asset_img https://i-blog.csdnimg.cn/blog_migrate/714bbdabaae45a4808bbc72ed44d298e.png %}
+![](https://i-blog.csdnimg.cn/blog_migrate/714bbdabaae45a4808bbc72ed44d298e.png)
 
 添加 Docker 的 GPG key
 
@@ -47,7 +50,7 @@ curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
 apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
 ```
 
-{% asset_img https://i-blog.csdnimg.cn/blog_migrate/391d7058187582694a90a8f1e0a7a68e.png %}
+![](https://i-blog.csdnimg.cn/blog_migrate/391d7058187582694a90a8f1e0a7a68e.png)
 
 设置稳定的 repository:
 
