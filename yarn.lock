@@ -1079,13 +1079,6 @@ hasown@^2.0.0, hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
-"hexo-asset-image@github:CodeFalling/hexo-asset-image":
-  version "0.0.5"
-  resolved "git+ssh://git@github.com/CodeFalling/hexo-asset-image.git#3c114cf0c0343ab28469635085b225fcae7fb9d3"
-  dependencies:
-    cheerio "^0.19.0"
-    entities "^1.1.2"
-
 hexo-browsersync@^0.3.0:
   version "0.3.0"
   resolved "https://registry.npmmirror.com/hexo-browsersync/-/hexo-browsersync-0.3.0.tgz"
