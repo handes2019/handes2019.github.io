@@ -14,8 +14,7 @@ category: raspberry
 
 如果采用这一步安装成功，可直接跳到下文的[图形界面](https://so.csdn.net/so/search?q=%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2&spm=1001.2101.3001.7020)安装那里继续阅读。
 
-![](https://i-blog.csdnimg.cn/blog_migrate/119b6052de3d55d7dfbdc35891612a29.png)
-
+{% asset_img https://i-blog.csdnimg.cn/blog_migrate/119b6052de3d55d7dfbdc35891612a29.png %}
 
 安装方法二（apt 安装）
 由于 Raspbian 基于 Debian，我们还可以使用 apt 来安装 Docker，首先需要更新一下软件包的索引。
@@ -34,7 +33,7 @@ ca-certificates
 software-properties-common
 ```
 
-![](https://i-blog.csdnimg.cn/blog_migrate/714bbdabaae45a4808bbc72ed44d298e.png)
+{% asset_img https://i-blog.csdnimg.cn/blog_migrate/714bbdabaae45a4808bbc72ed44d298e.png %}
 
 添加 Docker 的 GPG key
 
@@ -48,7 +47,7 @@ curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
 apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
 ```
 
-![](https://i-blog.csdnimg.cn/blog_migrate/391d7058187582694a90a8f1e0a7a68e.png)
+{% asset_img https://i-blog.csdnimg.cn/blog_migrate/391d7058187582694a90a8f1e0a7a68e.png %}
 
 设置稳定的 repository:
 
