@@ -108,7 +108,7 @@ gitalk:
   enable: false
   client_id: Ov23liDqUgimFpcPtn8b # GitHub 应用 Client ID
   client_secret: b948f8868dbc4c699d572a9650d090df623cea6a # GitHub 应用 Client Secret
-  repo: https://github.com/handes2019/Gitalk-.git # 用于存放评论数据的 GitHub 仓库
+  repo: https://github.com/handes2019/Gitalk.git # 用于存放评论数据的 GitHub 仓库
   owner: handes2019 # 该 GitHub 仓库所有者
   admin: [handes2019] # 具有写该 GitHub 仓库权限的用户，例如: [adminA,adminB]
   id: location.pathname # (可选) 页面的唯一标识
