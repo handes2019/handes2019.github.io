@@ -105,7 +105,7 @@ valine:
 # gitalk
 # 详见 https://github.com/gitalk/gitalk
 gitalk:
-  enable: false
+  enable: true
   client_id: Ov23liDqUgimFpcPtn8b # GitHub 应用 Client ID
   client_secret: b948f8868dbc4c699d572a9650d090df623cea6a # GitHub 应用 Client Secret
   repo: https://github.com/handes2019/Gitalk.git # 用于存放评论数据的 GitHub 仓库
