@@ -103,4 +103,4 @@ theme: arknights
 deploy:
   type: git
   repository: git@github.com:handes2019/handes2019.github.io.git
-  branch: master
+  branch: gh-pages
