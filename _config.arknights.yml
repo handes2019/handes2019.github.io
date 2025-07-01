@@ -112,7 +112,6 @@ gitalk:
   owner: handes2019 # 该 GitHub 仓库所有者
   admin: handes2019 # 具有写该 GitHub 仓库权限的用户，例如: [adminA,adminB]
   id: md5 # (可选) 页面的唯一标识
-  distractionFreeMode: true 
 
 # Waline
 # 详情: https://waline.js.org/
