@@ -111,7 +111,7 @@ gitalk:
   repo: handes2019.github.io # 用于存放评论数据的 GitHub 仓库
   owner: handes2019 # 该 GitHub 仓库所有者
   admin: ['handes2019'] # 具有写该 GitHub 仓库权限的用户，例如: [adminA,adminB]
-  id: md5 # (可选) 页面的唯一标识
+  id: location.pathname # (可选) 页面的唯一标识
 
 # Waline
 # 详情: https://waline.js.org/
