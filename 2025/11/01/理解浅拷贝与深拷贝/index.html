@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>理解浅拷贝与深拷贝 | 夜猫症候群的一些事一些情</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23liDqUgimFpcPtn8b',
+ clientSecret: 'b948f8868dbc4c699d572a9650d090df623cea6a',
+ repo: 'handes2019.github.io',
+ owner: 'handes2019',
+ admin: ['handes2019'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23liDqUgimFpcPtn8b',
+ clientSecret: 'b948f8868dbc4c699d572a9650d090df623cea6a',
+ repo: 'handes2019.github.io',
+ owner: 'handes2019',
+ admin: ['handes2019'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>理解浅拷贝与深拷贝</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-11-01T13:49:37.000Z" id="date"> 2025-11-01</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-11-01T13:57:59.586Z" id="updated"> 2025-11-01</time></div></span></div></div><hr><div id="post-content"><h3 id="理解浅拷贝与深拷贝"><a href="#理解浅拷贝与深拷贝" class="headerlink" title="理解浅拷贝与深拷贝"></a>理解浅拷贝与深拷贝</h3><p>在深入<code>CloneHelper</code>之前，我们首先要理解<strong>浅拷贝（Shallow Copy）</strong> 与<strong>深拷贝（Deep Copy）</strong> 的核心区别。</p>
+<ul>
+<li><strong>浅拷贝</strong>：创建一个新对象，并将原始对象的所有字段复制到新对象。对于<strong>值类型字段</strong>，直接复制其值；对于<strong>引用类型字段</strong>，则复制其<strong>引用（即内存地址）</strong>，而非引用的对象本身。因此，原始对象和副本中的引用类型字段会指向<strong>同一个实际对象</strong>。在C#中，<code>Object.MemberwiseClone()</code>方法提供了浅拷贝的默认实现。</li>
+<li><strong>深拷贝</strong>：同样创建一个新对象，并复制所有字段。不同之处在于，对于引用类型字段，深拷贝会<strong>递归地创建引用对象的新副本</strong>。这样，原始对象和副本就拥有完全独立的引用对象，修改其中一个不会影响另一个。</li>
+</ul>
+<p>下面的表格清晰地展示了两者的主要区别：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>浅拷贝 (Shallow Copy)</th>
+<th>深拷贝 (Deep Copy)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>值类型字段</strong></td>
+<td>复制值，彼此独立</td>
+<td>复制值，彼此独立</td>
+</tr>
+<tr>
+<td><strong>引用类型字段</strong></td>
+<td>复制<strong>引用</strong>，共享对象</td>
+<td>创建<strong>新对象</strong>，完全独立</td>
+</tr>
+<tr>
+<td><strong>内存结构</strong></td>
+<td>原始对象与副本共享引用对象</td>
+<td>原始对象与副本拥有完全分离的对象图</td>
+</tr>
+<tr>
+<td><strong>默认实现</strong></td>
+<td><code>Object.MemberwiseClone()</code></td>
+<td>通常需手动实现或通过序列化</td>
+</tr>
+</tbody></table>
+<h3 id="实现深拷贝的几种方法"><a href="#实现深拷贝的几种方法" class="headerlink" title="实现深拷贝的几种方法"></a>实现深拷贝的几种方法</h3><p>C#中实现深拷贝有多种方式，<code>CloneHelper</code>类通常会选用其中一种或几种。</p>
+<h4 id="1-序列化-反序列化方法"><a href="#1-序列化-反序列化方法" class="headerlink" title="1. 序列化&#x2F;反序列化方法"></a>1. 序列化&#x2F;反序列化方法</h4><p>这是实现深拷贝较为通用和便捷的方法，其原理是将对象序列化（Serialize）到一个中间流（如内存流），然后再从该流反序列化（Deserialize）出一个新对象。</p>
+<ul>
+<li><strong>二进制序列化</strong>：<br>需要注意的是，自 .NET Framework 后期版本及 .NET Core&#x2F;.NET 5+ 以来，<code>BinaryFormatter</code> 由于其安全性问题已逐渐不被推荐使用。这里仅作示例，<strong>在生产环境中应谨慎使用或寻找替代方案</strong>。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">using System.IO;<br>using System.Runtime.Serialization.Formatters.Binary;<br><br>public static class CloneHelper<br>&#123;<br>    public static T DeepClone&lt;T&gt;(T obj)<br>    &#123;<br>        using (var ms = new MemoryStream())<br>        &#123;<br>            var formatter = new BinaryFormatter();<br>            formatter.Serialize(ms, obj);<br>            ms.Position = 0;<br>            return (T)formatter.Deserialize(ms);<br>        &#125;<br>    &#125;<br>&#125;<br>// 使用示例<br>// var original = new MyClass();<br>// var cloned = CloneHelper.DeepClone(original);<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">此方法要求待拷贝的类标记为<br></code></pre></td></tr></table></figure>
+
+<p><code>[Serializable]</code>。</p>
+<ul>
+<li><strong>JSON序列化</strong>（推荐）：<br>使用 <code>Newtonsoft.Json</code> (<code>Json.NET</code>) 或 <code>System.Text.Json</code> 通过JSON序列化实现深拷贝是当前更常见和安全的做法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">using Newtonsoft.Json;<br><br>public static T DeepCloneJson&lt;T&gt;(T source)<br>&#123;<br>    if (ReferenceEquals(source, null))<br>    &#123;<br>        return default(T);<br>    &#125;<br>    var deserializeSettings = new JsonSerializerSettings &#123; ObjectCreationHandling = ObjectCreationHandling.Replace &#125;;<br>    return JsonConvert.DeserializeObject&lt;T&gt;(JsonConvert.SerializeObject(source), deserializeSettings);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这种方法通常不要求类具备 <code>[Serializable]</code> 特性，但需要注意其无法序列化循环引用或某些特殊类型。</p>
+<h4 id="2-实现-ICloneable-接口"><a href="#2-实现-ICloneable-接口" class="headerlink" title="2. 实现 ICloneable 接口"></a>2. 实现 ICloneable 接口</h4><p>.NET 提供了 <code>ICloneable</code> 接口，它包含一个 <code>Clone</code> 方法。然而，该接口并未明确规定 <code>Clone</code> 方法应实现浅拷贝还是深拷贝，这可能导致混淆。你可以在实现中自行决定拷贝策略。</p>
+<p><strong>浅拷贝实现</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">public class MyClass : ICloneable<br>&#123;<br>    public int ValueTypeProperty &#123; get; set; &#125;<br>    public AnotherClass ReferenceTypeProperty &#123; get; set; &#125;<br><br>    public object Clone()<br>    &#123;<br>        // 使用 MemberwiseClone 进行浅拷贝<br>        return this.MemberwiseClone();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>  <strong>深拷贝实现</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">public class MyClass : ICloneable<br>&#123;<br>    public int ValueTypeProperty &#123; get; set; &#125;<br>    public AnotherClass ReferenceTypeProperty &#123; get; set; &#125;<br><br>    public object Clone()<br>    &#123;<br>        // 手动或通过其他方式创建深拷贝<br>        var clone = (MyClass)this.MemberwiseClone(); // 先浅拷贝<br>        // 对引用类型属性进行深拷贝<br>        clone.ReferenceTypeProperty = new AnotherClass() &#123; /* 复制属性 */ &#125;;<br>        // 或者如果 AnotherClass 也实现了 ICloneable，可以：<br>        // clone.ReferenceTypeProperty = (AnotherClass)this.ReferenceTypeProperty.Clone();<br>        return clone;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>为了清晰起见，一个类中同时提供深拷贝和浅拷贝方法时，建议明确命名，如 <code>ShallowCopy()</code> 和 <code>DeepCopy()</code>。</p>
+<h4 id="3-反射方法"><a href="#3-反射方法" class="headerlink" title="3. 反射方法"></a>3. 反射方法</h4><p>利用反射可以遍历对象的所有字段并递归地进行拷贝，实现一个通用的深拷贝方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">using System.Reflection;<br><br>public static T DeepCopyByReflect&lt;T&gt;(T obj)<br>&#123;<br>    // 如果是字符串或值类型则直接返回<br>    if (obj is string || obj.GetType().IsValueType) return obj;<br><br>    object retval = Activator.CreateInstance(obj.GetType());<br>    FieldInfo[] fields = obj.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);<br>    foreach (FieldInfo field in fields)<br>    &#123;<br>        try<br>        &#123;<br>            field.SetValue(retval, DeepCopyByReflect(field.GetValue(obj)));<br>        &#125;<br>        catch &#123; &#125;<br>    &#125;<br>    return (T)retval;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>这种方法通用性强，但性能开销相对较大，且需注意处理循环引用等问题。</p>
+<h4 id="4-表达式树方法"><a href="#4-表达式树方法" class="headerlink" title="4. 表达式树方法"></a>4. 表达式树方法</h4><p>对于性能要求较高的场景，可以使用表达式树（Expression Tree）动态生成并编译拷贝代码，首次构建后，后续拷贝操作速度很快。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">using System.Linq.Expressions;<br><br>public static T DeepClone&lt;T&gt;(T obj)<br>&#123;<br>    // 这是一个非常简化的示例，实际深拷贝的表达式树实现复杂得多<br>    // 通常需要处理对象图的遍历和所有成员的复制<br>    var parameter = Expression.Parameter(typeof(T));<br>    var expression = Expression.Lambda&lt;Func&lt;T, T&gt;&gt;(Expression.New(typeof(T).GetConstructor(Type.EmptyTypes)), parameter);<br>    var func = expression.Compile();<br>    return func(obj);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>此示例仅创建新对象，未复制属性，完整的深拷贝实现较为复杂。</p>
+<h3 id="构建你自己的-CloneHelper"><a href="#构建你自己的-CloneHelper" class="headerlink" title="构建你自己的 CloneHelper"></a>构建你自己的 CloneHelper</h3><p>综合以上方法，你可以创建一个功能更全面的 <code>CloneHelper</code> 静态类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">using System;<br>using System.IO;<br>using System.Runtime.Serialization.Formatters.Binary;<br>using Newtonsoft.Json;<br><br>public static class CloneHelper<br>&#123;<br>    // 注意：BinaryFormatter 的安全性风险<br>    [Obsolete(&quot;BinaryFormatter is obsolete and should not be used for new development. Consider using DeepCloneJson instead.&quot;)]<br>    public static T DeepCloneUsingBinaryFormatter&lt;T&gt;(T obj)<br>    &#123;<br>        if (!typeof(T).IsSerializable)<br>        &#123;<br>            throw new ArgumentException(&quot;The type must be serializable.&quot;, nameof(obj));<br>        &#125;<br>        if (ReferenceEquals(obj, null))<br>        &#123;<br>            return default(T);<br>        &#125;<br>        using (var ms = new MemoryStream())<br>        &#123;<br>            var formatter = new BinaryFormatter();<br>            formatter.Serialize(ms, obj);<br>            ms.Seek(0, SeekOrigin.Begin);<br>            return (T)formatter.Deserialize(ms);<br>        &#125;<br>    &#125;<br><br>    // 使用 JSON 序列化 (推荐)<br>    public static T DeepCloneJson&lt;T&gt;(T source)<br>    &#123;<br>        if (ReferenceEquals(source, null))<br>        &#123;<br>            return default(T);<br>        &#125;<br>        var deserializeSettings = new JsonSerializerSettings &#123; ObjectCreationHandling = ObjectCreationHandling.Replace &#125;;<br>        return JsonConvert.DeserializeObject&lt;T&gt;(JsonConvert.SerializeObject(source), deserializeSettings);<br>    &#125;<br><br>    // 提供通用的 CloneObject 方法，默认使用 JSON 方式<br>    public static T CloneObject&lt;T&gt;(T obj)<br>    &#123;<br>        return DeepCloneJson(obj);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="实际应用场景与选择建议"><a href="#实际应用场景与选择建议" class="headerlink" title="实际应用场景与选择建议"></a>实际应用场景与选择建议</h3><ul>
+<li><strong>简单对象、性能敏感</strong>：如果对象图简单，或对性能要求极高，且能接受浅拷贝的局限性，使用 <strong><code>MemberwiseClone</code>实现浅拷贝</strong>。</li>
+<li><strong>复杂对象图、需要完全独立</strong>：对于复杂的嵌套对象，需要完全独立的副本时，<strong>推荐使用基于JSON序列化的深拷贝</strong>。它相对安全，且易于实现。</li>
+<li><strong>需要明确拷贝语义</strong>：在设计和实现自己的类时，若需提供拷贝功能，建议实现 <code>ICloneable</code> 接口，并同时提供明确命名的 <code>DeepCopy</code> 和 <code>ShallowCopy</code> 方法，避免混淆。</li>
+<li><strong>极高性能、复杂类型</strong>：若拷贝操作非常频繁且对性能有极致要求，可考虑使用<strong>表达式树</strong>或<strong>IL代码生成</strong>等高级技术来预先编译拷贝逻辑。</li>
+</ul>
+<h3 id="使用示例与陷阱"><a href="#使用示例与陷阱" class="headerlink" title="使用示例与陷阱"></a>使用示例与陷阱</h3><p>假设我们有如下类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">public class Department<br>&#123;<br>    public string Name &#123; get; set; &#125;<br>&#125;<br><br>public class Employee : ICloneable<br>&#123;<br>    public string Name &#123; get; set; &#125;<br>    public Department Department &#123; get; set; &#125; // 引用类型<br><br>    // 浅拷贝<br>    public object Clone()<br>    &#123;<br>        return this.MemberwiseClone();<br>    &#125;<br><br>    // 深拷贝 (通过序列化 helper)<br>    public Employee DeepClone()<br>    &#123;<br>        return CloneHelper.CloneObject(this);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>测试代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">var original = new Employee <br>&#123; <br>    Name = &quot;张三&quot;, <br>    Department = new Department &#123; Name = &quot;技术部&quot; &#125; <br>&#125;;<br><br>// 浅拷贝<br>var shallowCopy = (Employee)original.Clone();<br>// 深拷贝<br>var deepCopy = original.DeepClone();<br><br>// 修改原始对象的部门名称<br>original.Department.Name = &quot;市场部&quot;;<br><br>Console.WriteLine($&quot;Original Department: &#123;original.Department.Name&#125;&quot;);           // 市场部<br>Console.WriteLine($&quot;ShallowCopy Department: &#123;shallowCopy.Department.Name&#125;&quot;);     // 市场部 (共享对象)<br>Console.WriteLine($&quot;DeepCopy Department: &#123;deepCopy.Department.Name&#125;&quot;);           // 技术部 (独立对象)<br></code></pre></td></tr></table></figure>
+
+
+<p><strong>主要陷阱</strong>：</p>
+<ol>
+<li><strong>循环引用</strong>：如果对象图包含循环引用，序列化方法（尤其是JSON序列化器的某些配置）可能会抛出异常，需要特殊处理。</li>
+<li><strong>性能开销</strong>：深拷贝，尤其是基于反射或序列化的方法，比浅拷贝开销大。对于大型对象图或频繁拷贝的场景，需注意性能影响。</li>
+<li><strong><code>BinaryFormatter</code> 的安全性问题</strong>：如前所述，应避免使用 <code>BinaryFormatter</code>。</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><code>CloneHelper.CloneObject</code> 的本质是提供一个统一、便捷的入口来创建对象的深拷贝。在选择具体的实现方式时，你需要权衡<strong>性能、安全性、易用性</strong>和你的具体需求。目前，<strong>基于JSON序列化的方法</strong>因其较好的平衡性而被广泛推荐。理解浅拷贝与深拷贝的区别，以及各种实现方式的原理，是正确进行对象拷贝的关键。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/11/01/Channel-%E8%AF%A6%E8%A7%A3/">Channel 详解 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Handes</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.</span> <span class="toc-text">理解浅拷贝与深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">实现深拷贝的几种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%BA%8F%E5%88%97%E5%8C%96-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">1. 序列化&#x2F;反序列化方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0-ICloneable-%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.2.</span> <span class="toc-text">2. 实现 ICloneable 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8F%8D%E5%B0%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">3. 反射方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">4. 表达式树方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84-CloneHelper"><span class="toc-number">3.</span> <span class="toc-text">构建你自己的 CloneHelper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%8E%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="toc-number">4.</span> <span class="toc-text">实际应用场景与选择建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B%E4%B8%8E%E9%99%B7%E9%98%B1"><span class="toc-number">5.</span> <span class="toc-text">使用示例与陷阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
